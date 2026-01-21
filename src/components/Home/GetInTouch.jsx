@@ -30,7 +30,7 @@ const ContactSection = () => {
     {
       icon: <FaMapMarkerAlt />,
       title: "The Mill",
-      details: ["123 Industrial Valley", "Gujarat, India 380001"],
+      details: ["1560 Broadway New York,", "NY 10036 United States"],
     },
     {
       icon: <FaPhoneAlt />,

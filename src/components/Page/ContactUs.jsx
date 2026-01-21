@@ -30,8 +30,8 @@ const ContactPage = () => {
     {
       icon: <FaMapMarkerAlt />,
       title: "Tech Hub",
-      detail: "42nd Industrial Sector",
-      sub: "Ahmedabad, India 380001",
+      detail: "1560 Broadway",
+      sub: " NY 10036 United States",
     },
   ];
 

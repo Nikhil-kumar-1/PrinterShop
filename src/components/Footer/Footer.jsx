@@ -109,8 +109,8 @@ const Footer = () => {
               <div className="flex gap-5 items-start group">
                 <FaMapMarkerAlt className="text-red-600 mt-1" />
                 <p className="text-sm font-bold leading-relaxed text-slate-500">
-                  Plot No. 42, Industrial Estate, <br />
-                  Ahmedabad, India 380001
+                  1560 Broadway New York, <br />
+                  NY 10036 United States
                 </p>
               </div>
               <div className="flex gap-5 items-center group">
