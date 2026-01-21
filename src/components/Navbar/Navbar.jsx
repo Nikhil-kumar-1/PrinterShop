@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { FaPrint, FaBars, FaTimes, FaChevronRight } from "react-icons/fa";
+import {
+  FaPrint,
+  FaBars,
+  FaTimes,
+  FaChevronRight,
+  FaShoppingCart,
+} from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
+import { useCart } from "../Page/CartContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -14,7 +22,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
@@ -22,6 +29,7 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/products", label: "Products" },
+    { to: "/cart", label: "Cart" },
     { to: "/about", label: "About Us" },
     { to: "/contact", label: "Contact Us" },
   ];
@@ -38,7 +46,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* LOGO (CLICK → HOME) */}
+        {/* LOGO */}
         <NavLink to="/" className="group">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -100,6 +108,26 @@ const Navbar = () => {
             </motion.div>
           ))}
 
+          {/* CART ICON WITH BADGE */}
+          <Link to="/cart" className="relative ml-4">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className={`p-3 rounded-full transition-colors ${
+                scrolled
+                  ? "bg-slate-100 text-slate-900 hover:bg-red-600 hover:text-white"
+                  : "bg-white/20 text-white hover:bg-red-600"
+              }`}
+            >
+              <FaShoppingCart size={18} />
+            </motion.div>
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                {cartCount > 9 ? "9+" : cartCount}
+              </span>
+            )}
+          </Link>
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -113,13 +141,28 @@ const Navbar = () => {
           </motion.button>
         </div>
 
-        {/* MOBILE TOGGLE */}
-        <button
-          className={`lg:hidden p-2 rounded-lg transition-colors ${textColor}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
-        </button>
+        {/* MOBILE TOGGLE WITH CART */}
+        <div className="flex items-center lg:hidden gap-4">
+          <Link to="/cart" className="relative">
+            <div
+              className={`p-2 rounded-lg ${scrolled ? "text-slate-900" : "text-white"}`}
+            >
+              <FaShoppingCart size={22} />
+            </div>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                {cartCount > 9 ? "9+" : cartCount}
+              </span>
+            )}
+          </Link>
+
+          <button
+            className={`p-2 rounded-lg transition-colors ${textColor}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* MOBILE MENU */}

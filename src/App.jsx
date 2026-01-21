@@ -10,23 +10,27 @@ import PrivacyPolicy from "./components/Page/Privacy";
 import TermsOfUse from "./components/Page/Terms";
 import ReturnPolicy from "./components/Page/Return";
 import ScrollToTop from "./components/ScrollOnTop";
+import { CartProvider } from "./components/Page/CartContext";
+import CartPage from "./components/Page/CartPage";
 
 const App = () => {
   return (
     <BrowserRouter>
-    <ScrollToTop />
-    <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/products" element={<ProductPage />} />
-        <Route path="/contact" element={<ContactPage/>} />
-        <Route path="/privacy" element={<PrivacyPolicy/>} />
-        <Route path="/terms" element={<TermsOfUse />} />
-        <Route path="/return" element={<ReturnPolicy />} />
-        
-      </Routes>
-      <Footer />
+      <CartProvider>
+        <ScrollToTop /> {/* ✅ Router ke andar */}
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/products" element={<ProductPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/return" element={<ReturnPolicy />} />
+          <Route path="/cart" element={<CartPage/>} />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </BrowserRouter>
   );
 };

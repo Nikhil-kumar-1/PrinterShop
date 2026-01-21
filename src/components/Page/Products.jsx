@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaPrint,
-  FaShoppingCart,
-  FaChevronRight,
-  FaFilter,
-  FaTools,
-  FaHistory,
-  FaUsers,
-  FaGlobe,
-} from "react-icons/fa";
+import { FaChevronRight, FaShoppingCart, FaCheck } from "react-icons/fa";
+import { useCart } from "./CartContext";
 
 const productsData = [
   // --- PRODUCTION DIGITAL PRESS ---
@@ -223,6 +215,17 @@ const productsData = [
 
 const ProductPage = () => {
   const [filter, setFilter] = useState("All");
+  const { addToCart } = useCart();
+  const [addedToCart, setAddedToCart] = useState({});
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setAddedToCart({ ...addedToCart, [product.id]: true });
+
+    setTimeout(() => {
+      setAddedToCart((prev) => ({ ...prev, [product.id]: false }));
+    }, 2000);
+  };
 
   const filteredProducts =
     filter === "All"
@@ -239,7 +242,7 @@ const ProductPage = () => {
 
   return (
     <div className="bg-[#FDFCF8] overflow-hidden">
-      {/* 1. HERO SECTION - SYNCED WITH ABOUT PAGE */}
+      {/* 1. HERO SECTION */}
       <section className="relative pt-48 pb-32 bg-[#020617] overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
@@ -291,7 +294,7 @@ const ProductPage = () => {
       </section>
 
       {/* 2. FILTER BAR - SHARP & STICKY */}
-      <div className="sticky top-0 z-[80] bg-white border-b border-slate-200 shadow-sm">
+      <div className="sticky top-20 z-[80] bg-white border-b border-slate-200 shadow-sm">
         <div className="container mx-auto px-6 flex items-center justify-between py-6 overflow-x-auto">
           <div className="flex gap-2">
             {categories.map((cat) => (
@@ -314,7 +317,7 @@ const ProductPage = () => {
         </div>
       </div>
 
-      {/* 3. PRODUCT GRID - SHARP BORDERS */}
+      {/* 3. PRODUCT GRID WITH ADD TO CART */}
       <section className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 border-t-2 border-l-2 border-slate-900 shadow-2xl">
@@ -334,6 +337,16 @@ const ProductPage = () => {
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                       alt={p.name}
                     />
+                    {addedToCart[p.id] && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 text-xs font-bold uppercase tracking-widest"
+                      >
+                        Added!
+                      </motion.div>
+                    )}
                   </div>
                   <div className="p-8">
                     <span className="text-[10px] font-black text-red-600 uppercase tracking-widest mb-2 block">
@@ -346,14 +359,36 @@ const ProductPage = () => {
                       {p.specs}
                     </p>
 
-                    <div className="flex justify-between items-center">
-                      <span className="text-2xl font-black text-slate-900">
+                    <div className="flex justify-between items-center gap-4">
+                      <span className="text-2xl font-black text-slate-900 whitespace-nowrap">
                         <span className="text-sm align-top mr-1 font-bold text-red-600">
                           $
                         </span>
                         {p.price}
                       </span>
-                      <button className="bg-slate-900 text-white p-4 group-hover:bg-red-600 transition-colors">
+
+                      {/* ADD TO CART BUTTON */}
+                      <motion.button
+                        onClick={() => handleAddToCart(p)}
+                        whileTap={{ scale: 0.9 }}
+                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-[10px] font-black uppercase tracking-widest transition-all min-w-[140px] ${
+                          addedToCart[p.id]
+                            ? "bg-green-600 text-white"
+                            : "bg-slate-900 text-white hover:bg-red-600"
+                        }`}
+                      >
+                        {addedToCart[p.id] ? (
+                          <>
+                            <FaCheck /> Added to Cart
+                          </>
+                        ) : (
+                          <>
+                            <FaShoppingCart /> Add to Cart
+                          </>
+                        )}
+                      </motion.button>
+
+                      <button className="bg-slate-900 text-white p-3 hover:bg-red-600 transition-colors">
                         <FaChevronRight />
                       </button>
                     </div>
@@ -366,22 +401,35 @@ const ProductPage = () => {
       </section>
 
       {/* 4. CTA FOOTER */}
-      <section className="py-24 bg-red-600">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-24 bg-red-600 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>
+        </div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-5xl md:text-[100px] font-black text-white leading-[0.8] uppercase mb-16 tracking-tighter">
             Witness the <br />{" "}
             <span className="font-serif italic font-light lowercase tracking-normal text-slate-900">
               machine magic.
             </span>
           </h2>
-          <button className="px-16 py-6 bg-slate-900 text-white font-black uppercase text-xs tracking-widest shadow-[10px_10px_0px_#fff] hover:bg-white hover:text-slate-900 transition-all active:translate-y-2 active:shadow-none">
-            Request Quote
-          </button>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <button className="px-16 py-6 bg-slate-900 text-white font-black uppercase text-xs tracking-widest shadow-[10px_10px_0px_#fff] hover:bg-white hover:text-slate-900 transition-all active:translate-y-2 active:shadow-none">
+              Request Quote
+            </button>
+
+            <button className="px-16 py-6 bg-white text-slate-900 font-black uppercase text-xs tracking-widest shadow-[10px_10px_0px_#0f172a] hover:bg-slate-900 hover:text-white transition-all active:translate-y-2 active:shadow-none">
+              View Cart
+            </button>
+          </div>
         </div>
       </section>
 
+      {/* BACKGROUND PATTERN */}
       <div
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+        className="fixed inset-0 z-0 opacity-[0.02] pointer-events-none"
         style={{
           backgroundImage: `url('https://www.transparenttextures.com/patterns/stardust.png')`,
         }}
