@@ -4,214 +4,85 @@ import { FaChevronRight, FaShoppingCart, FaCheck } from "react-icons/fa";
 import { useCart } from "./CartContext";
 
 const productsData = [
-  // --- PRODUCTION DIGITAL PRESS ---
   {
     id: 1,
-    category: "Production",
-    brand: "HP INDIGO",
-    name: "15K Digital Press",
-    price: "245,000",
-    specs: "7-Color | 1200 DPI",
+    category: "Printer",
+    brand: "HP",
+    name: "HP LaserJet Pro MFP M126nw",
+    price: "269",
+    specs: "Laser | Print Scan Copy | Wi-Fi",
     image:
-      "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80",
+      "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTiAg0OK8wZhsOnZFN9D6CuzTsVIprmAuoMbBMGhvTSBi3wvQZOUDT9Qcvsz1m4tjOBhnkHHcKkUVjU86LgwUn7dunW0AkUMEyYHW9a-LthSiCdc9u8Fli4XYet4XiEK32DhO6ggQ&usqp=CAc",
   },
   {
     id: 2,
-    category: "Production",
-    brand: "HEIDELBERG",
-    name: "Versafire LV",
-    price: "185,000",
-    specs: "CMYK+W | Specialty Toner",
+    category: "Printer",
+    brand: "HP",
+    name: "HP LaserJet Pro M404dn",
+    price: "359",
+    specs: "Monochrome Laser | Duplex",
     image:
-      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80",
+      "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06385614.png",
   },
   {
     id: 3,
-    category: "Production",
-    brand: "RICOH",
-    name: "Pro C7200x",
-    price: "95,500",
-    specs: "5th Color Station | 360gsm",
+    category: "Printer",
+    brand: "Canon",
+    name: "Canon PIXMA G3020",
+    price: "199",
+    specs: "Ink Tank | Print Scan Copy | Wi-Fi",
     image:
-      "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&q=80",
+      "https://m.media-amazon.com/images/I/510un0jZqPL._AC_UY327_FMwebp_QL65_.jpg",
   },
   {
     id: 4,
-    category: "Production",
-    brand: "XEROX",
-    name: "Iridesse Production",
-    price: "210,000",
-    specs: "Metallic Inks | Ultra HD",
+    category: "Printer",
+    brand: "Canon",
+    name: "Canon imageCLASS MF3010",
+    price: "229",
+    specs: "Laser | Print Scan Copy",
     image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+      "https://m.media-amazon.com/images/I/61GxH8oe8yL._AC_UY327_FMwebp_QL65_.jpg",
   },
   {
     id: 5,
-    category: "Production",
-    brand: "KONICA MINOLTA",
-    name: "AccurioPress C14000",
-    price: "160,000",
-    specs: "140ppm | Intelligent Quality",
+    category: "Printer",
+    brand: "Epson",
+    name: "Epson EcoTank L3250",
+    price: "179",
+    specs: "Ink Tank | Wi-Fi | Borderless",
     image:
-      "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80",
+      "https://m.media-amazon.com/images/I/31DKV8u49ZL._SX300_SY300_QL70_FMwebp_.jpg",
   },
-
-  // --- LARGE FORMAT ---
   {
     id: 6,
-    category: "Large Format",
-    brand: "EPSON",
-    name: "SureColor P20000",
-    price: "11,995",
-    specs: "64-inch | 10-Color Ink",
-    image:
-      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80",
+    category: "Printer",
+    brand: "Brother",
+    name: "Brother DCP-L2520D",
+    price: "235",
+    specs: "Laser | Print Scan Copy | Duplex",
+    image: "https://m.media-amazon.com/images/I/61PX4h+IeuL._SX679_.jpg",
   },
   {
     id: 7,
-    category: "Large Format",
-    brand: "CANON",
-    name: "imagePROGRAF PRO-6100",
-    price: "12,495",
-    specs: "60-inch | LUCIA PRO Ink",
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+    category: "Printer",
+    brand: "Xerox",
+    name: "Xerox WorkCentre 3025",
+    price: "189",
+    specs: "Laser MFP | Print Scan Copy",
+    image: "https://m.media-amazon.com/images/I/51a1GoBdMgL._SX679_.jpg",
   },
   {
     id: 8,
-    category: "Large Format",
-    brand: "MIMAKI",
-    name: "UCJV300-160",
-    price: "22,500",
-    specs: "UV LED Print & Cut",
-    image:
-      "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&q=80",
-  },
-  {
-    id: 9,
-    category: "Large Format",
-    brand: "ROLAND",
-    name: "TrueVIS VG3-640",
-    price: "18,900",
-    specs: "Eco-Solvent | FlexFire",
-    image:
-      "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80",
-  },
-  {
-    id: 10,
-    category: "Large Format",
-    brand: "HP",
-    name: "Latex 800 W",
-    price: "29,000",
-    specs: "White Ink | Eco-Conscious",
-    image:
-      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80",
-  },
-
-  // --- INDUSTRIAL TEXTILE ---
-  {
-    id: 11,
-    category: "Textile",
-    brand: "BROTHER",
-    name: "GTXpro B Bulk",
-    price: "25,000",
-    specs: "DTG | Industrial Heads",
-    image:
-      "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&q=80",
-  },
-  {
-    id: 12,
-    category: "Textile",
-    brand: "KORNIT",
-    name: "Atlas MAX",
-    price: "350,000",
-    specs: "3D Print | Sustainable",
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
-  },
-  {
-    id: 13,
-    category: "Textile",
-    brand: "EPSON",
-    name: "Monna Lisa 8000",
-    price: "145,000",
-    specs: "Direct-to-Fabric | 8-Color",
-    image:
-      "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80",
-  },
-  {
-    id: 14,
-    category: "Textile",
-    brand: "MIMAKI",
-    name: "TS330-1600",
-    price: "24,000",
-    specs: "Sublimation Transfer",
-    image:
-      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80",
-  },
-  {
-    id: 15,
-    category: "Textile",
-    brand: "D.GEN",
-    name: "Papyrus Arete",
-    price: "88,000",
-    specs: "High Speed Transfer",
-    image:
-      "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&q=80",
-  },
-
-  // --- 3D & SPECIALTY ---
-  {
-    id: 16,
-    category: "Specialty",
-    brand: "STRATASYS",
-    name: "J850 Prime",
-    price: "220,000",
-    specs: "Full Color 3D | PANTONE",
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
-  },
-  {
-    id: 17,
-    category: "Specialty",
-    brand: "FORMLABS",
-    name: "Form 3L Industrial",
-    price: "10,999",
-    specs: "Large Format SLA",
-    image:
-      "https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80",
-  },
-  {
-    id: 18,
-    category: "Specialty",
-    brand: "HP",
-    name: "Multi Jet Fusion 5200",
-    price: "285,000",
-    specs: "Final Part Production",
-    image:
-      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80",
-  },
-  {
-    id: 19,
-    category: "Specialty",
-    brand: "MARKFORGED",
-    name: "X7 Carbon Fiber",
-    price: "69,000",
-    specs: "Continuous Fiber Reinf.",
-    image:
-      "https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=600&q=80",
-  },
-  {
-    id: 20,
-    category: "Specialty",
-    brand: "ROLAND",
-    name: "VersaSTUDIO MPX-90",
-    price: "4,500",
-    specs: "Metal Engraving",
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+    category: "Printer",
+    brand: "Pantum",
+    name: "Pantum P2500W",
+    price: "115",
+    specs: "Laser Printer | Wi-Fi",
+    image: "https://m.media-amazon.com/images/I/61LIkiH3nrL._SX679_.jpg",
   },
 ];
+
 
 const ProductPage = () => {
   const [filter, setFilter] = useState("All");
@@ -221,7 +92,6 @@ const ProductPage = () => {
   const handleAddToCart = (product) => {
     addToCart(product);
     setAddedToCart({ ...addedToCart, [product.id]: true });
-
     setTimeout(() => {
       setAddedToCart((prev) => ({ ...prev, [product.id]: false }));
     }, 2000);
@@ -230,19 +100,13 @@ const ProductPage = () => {
   const filteredProducts =
     filter === "All"
       ? productsData
-      : productsData.filter((p) => p.category === filter);
+      : productsData.filter((p) => p.brand === filter);
 
-  const categories = [
-    "All",
-    "Production",
-    "Large Format",
-    "Textile",
-    "Specialty",
-  ];
+  const categories = ["All", "HP", "Canon", "Epson", "Brother", "Xerox"];
 
   return (
     <div className="bg-[#FDFCF8] overflow-hidden">
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION - RESTORED ORIGINAL STYLE */}
       <section className="relative pt-48 pb-32 bg-[#020617] overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
@@ -287,21 +151,20 @@ const ProductPage = () => {
           </div>
         </div>
 
-        {/* Background Decorative Text */}
         <div className="absolute top-0 right-0 p-20 opacity-[0.05] pointer-events-none select-none text-white">
           <h2 className="text-[20rem] font-black leading-none">EQUIP</h2>
         </div>
       </section>
 
-      {/* 2. FILTER BAR - SHARP & STICKY */}
-      <div className="sticky top-20 z-[80] bg-white border-b border-slate-200 shadow-sm">
-        <div className="container mx-auto px-6 flex items-center justify-between py-6 overflow-x-auto">
+      {/* 2. FILTER BAR */}
+      <div className="sticky top-0 z-[80] bg-white border-b border-slate-200 shadow-sm">
+        <div className="container mx-auto px-6 flex items-center justify-between py-6 overflow-x-auto gap-4">
           <div className="flex gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-8 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${
+                className={`px-8 py-3 text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
                   filter === cat
                     ? "bg-slate-900 text-white"
                     : "bg-slate-100 text-slate-500 hover:bg-slate-200"
@@ -312,15 +175,15 @@ const ProductPage = () => {
             ))}
           </div>
           <p className="text-[10px] font-bold text-slate-400 uppercase hidden lg:block tracking-widest">
-            {filteredProducts.length} Heavy-Duty Units Available
+            {filteredProducts.length} Units Available
           </p>
         </div>
       </div>
 
-      {/* 3. PRODUCT GRID WITH ADD TO CART */}
+      {/* 3. PRODUCT GRID - FIXED USD & BUTTONS */}
       <section className="py-24">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 border-t-2 border-l-2 border-slate-900 shadow-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t-2 border-l-2 border-slate-900 shadow-2xl">
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((p) => (
                 <motion.div
@@ -329,68 +192,68 @@ const ProductPage = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  className="group relative bg-white border-r-2 border-b-2 border-slate-900 overflow-hidden"
+                  className="group relative bg-white border-r-2 border-b-2 border-slate-900 overflow-hidden flex flex-col"
                 >
-                  <div className="relative h-64 bg-slate-100 overflow-hidden">
+                  <div className="relative h-64 bg-white p-6 overflow-hidden flex items-center justify-center">
                     <img
                       src={p.image}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                      className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                       alt={p.name}
                     />
                     {addedToCart[p.id] && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                        className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 text-xs font-bold uppercase tracking-widest"
-                      >
+                      <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
                         Added!
-                      </motion.div>
+                      </div>
                     )}
                   </div>
-                  <div className="p-8">
+
+                  <div className="p-8 flex flex-col flex-grow">
                     <span className="text-[10px] font-black text-red-600 uppercase tracking-widest mb-2 block">
                       {p.brand}
                     </span>
-                    <h3 className="text-xl font-black text-slate-900 uppercase leading-none mb-4 group-hover:text-red-600 transition-colors">
+                    <h3 className="text-xl font-black text-slate-900 uppercase leading-none mb-4 group-hover:text-red-600 transition-colors min-h-[40px]">
                       {p.name}
                     </h3>
                     <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest border-l-2 border-red-600 pl-3 mb-8">
                       {p.specs}
                     </p>
 
-                    <div className="flex justify-between items-center gap-4">
-                      <span className="text-2xl font-black text-slate-900 whitespace-nowrap">
-                        <span className="text-sm align-top mr-1 font-bold text-red-600">
+                    <div className="mt-auto">
+                      <div className="flex items-baseline mb-6">
+                        <span className="text-sm font-bold text-red-600 mr-1">
                           $
                         </span>
-                        {p.price}
-                      </span>
+                        <span className="text-3xl font-black text-slate-900">
+                          {p.price}
+                        </span>
+                      </div>
 
-                      {/* ADD TO CART BUTTON */}
-                      <motion.button
-                        onClick={() => handleAddToCart(p)}
-                        whileTap={{ scale: 0.9 }}
-                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-[10px] font-black uppercase tracking-widest transition-all min-w-[140px] ${
-                          addedToCart[p.id]
-                            ? "bg-green-600 text-white"
-                            : "bg-slate-900 text-white hover:bg-red-600"
-                        }`}
-                      >
-                        {addedToCart[p.id] ? (
-                          <>
-                            <FaCheck /> Added to Cart
-                          </>
-                        ) : (
-                          <>
-                            <FaShoppingCart /> Add to Cart
-                          </>
-                        )}
-                      </motion.button>
+                      {/* ACTIONS STACKED FOR RESPONSIVENESS */}
+                      <div className="flex flex-col gap-2">
+                        <motion.button
+                          onClick={() => handleAddToCart(p)}
+                          whileTap={{ scale: 0.95 }}
+                          className={`w-full flex items-center justify-center gap-2 py-4 text-[10px] font-black uppercase tracking-widest transition-all ${
+                            addedToCart[p.id]
+                              ? "bg-green-600 text-white"
+                              : "bg-slate-900 text-white hover:bg-red-600"
+                          }`}
+                        >
+                          {addedToCart[p.id] ? (
+                            <>
+                              <FaCheck /> Added
+                            </>
+                          ) : (
+                            <>
+                              <FaShoppingCart /> Add to Cart
+                            </>
+                          )}
+                        </motion.button>
 
-                      <button className="bg-slate-900 text-white p-3 hover:bg-red-600 transition-colors">
-                        <FaChevronRight />
-                      </button>
+                        <button className="w-full flex items-center justify-center py-3 bg-slate-100 text-slate-900 text-[10px] font-black uppercase hover:bg-red-600 hover:text-white transition-all">
+                          Details <FaChevronRight className="ml-2" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -402,11 +265,6 @@ const ProductPage = () => {
 
       {/* 4. CTA FOOTER */}
       <section className="py-24 bg-red-600 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>
-        </div>
-
         <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-5xl md:text-[100px] font-black text-white leading-[0.8] uppercase mb-16 tracking-tighter">
             Witness the <br />{" "}
@@ -416,24 +274,15 @@ const ProductPage = () => {
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="px-16 py-6 bg-slate-900 text-white font-black uppercase text-xs tracking-widest shadow-[10px_10px_0px_#fff] hover:bg-white hover:text-slate-900 transition-all active:translate-y-2 active:shadow-none">
+            <button className="w-full sm:w-auto px-16 py-6 bg-slate-900 text-white font-black uppercase text-xs tracking-widest shadow-[10px_10px_0px_#fff]">
               Request Quote
             </button>
-
-            <button className="px-16 py-6 bg-white text-slate-900 font-black uppercase text-xs tracking-widest shadow-[10px_10px_0px_#0f172a] hover:bg-slate-900 hover:text-white transition-all active:translate-y-2 active:shadow-none">
+            <button className="w-full sm:w-auto px-16 py-6 bg-white text-slate-900 font-black uppercase text-xs tracking-widest shadow-[10px_10px_0px_#0f172a]">
               View Cart
             </button>
           </div>
         </div>
       </section>
-
-      {/* BACKGROUND PATTERN */}
-      <div
-        className="fixed inset-0 z-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage: `url('https://www.transparenttextures.com/patterns/stardust.png')`,
-        }}
-      />
     </div>
   );
 };
