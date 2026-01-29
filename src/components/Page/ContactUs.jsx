@@ -7,6 +7,7 @@ import {
   FaRegClock,
   FaHeadset,
   FaMicrochip,
+  FaFacebookF,
   FaArrowRight,
 } from "react-icons/fa";
 
@@ -115,8 +116,10 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+      {/* 5. FACEBOOK CUSTOMER SERVICE CALL SECTION */}
+      
 
-     <GetInTouch />
+      <GetInTouch />
 
       {/* 4. CTA / LOCATION - Machine Magic Style */}
       <section className="py-28 bg-red-600">
